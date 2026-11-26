@@ -1,0 +1,30 @@
+<ng-container>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Sr.no</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Edit</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (std of getStudentArr; track std.id; let i = $index) {
+            <tr>
+                <td>{{i + 1}}</td>
+                <td>{{std.fname}} {{std.lname}}</td>
+                <td>{{std.email}}</td>
+                <td>{{std.contact}}</td>
+                <td><button mat-mini-fab color="primary" (click)="onEdit()"><mat-icon>edit</mat-icon></button></td>
+                <td><button mat-mini-fab color="warn" (click)="onRemove(std.id)"><mat-icon>remove</mat-icon></button></td>
+            </tr>
+            }@empty {
+                <tr>
+                    <td colspan="6">No students available</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</ng-container>
